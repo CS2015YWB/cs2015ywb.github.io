@@ -1,0 +1,81 @@
+@font-face {
+    font-family: 'Angelina-Script';
+    src: url('../font/Angelina-Script-3.ttf');
+}
+@font-face {
+    font-family: 'Monaco';
+    src: url('../font/Monaco.ttf');
+}
+@font-face {
+    font-family: 'Xiawucha';
+    src: url('../font/XiaWuCha.ttf');
+}
+
+html,body{
+    background-repeat: no-repeat;
+	  background-attachment:fixed;
+	  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+	  background-position:50% 50%;
+	  margin:0;
+	  padding:0;
+	  width:100%;
+	  height:100%;
+	  background-image:url(../img/road-scenic-mountains-trees-asphalt-clouds-sky.jpeg);
+	  -webkit-transition: All 2s ease;
+	  -moz-transition: All 2s ease;
+	  -o-transition: All 2s ease;
+	  -ms-transition: All 2s ease;
+	  transition: All 2s ease;
+}
+.title{
+    position: absolute;
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+}
+.blogname{
+    text-align: center;
+    font-family: Angelina-Script;
+    font-size: 4em;
+    text-shadow: 5px 5px 5px #c8d9eb;
+}
+.daohang{
+    font-family: Xiawucha;
+    font-weight: normal;
+    font-size: 1.4em;
+    text-shadow: 1px 1px 1px whitesmoke;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.another{
+    width: 100%;
+    font-family: Monaco, monospace;
+    font-size: 0.75em;
+    position: absolute;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%,-50%);
+    color: white;
+}
+.footer{
+  background-color: rgba(0,0,0,0.25);
+  position: absolute;
+  left: 50%;
+  top: 97%;
+  height: 6%;
+  transform: translate(-50%,-50%);
+  width:100%;
+  text-align: center;
+  display: flex; align-items: center; justify-content: center;
+}
+.footer span{
+  font-family: Monaco, monospace;
+  font-size: 0.75em;
+  color: white;
+}
