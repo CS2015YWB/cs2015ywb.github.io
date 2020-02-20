@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>笑话</title>
+    <title>my-project</title>
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div id="app">
-       <p>{{message}}</p>
+       <p v-text="message"></p>
        <button @click="refresh">下一条</button>
     </div>
     <script>
@@ -22,7 +22,7 @@
         },
         methods:{
             refresh: function(){
-                axios.get(this.api + this.num).then(response => (this.message = response.data.jokes))
+                axios.get(this.api + this.num).then(response => (this.message = response.data.jokes[0]))
             }
         }
       })
