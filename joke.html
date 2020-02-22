@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!--api: https://autumnfish.cn/api/joke/-->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>笑话</title>
+    <title>笑话/JOKE</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  </head>
+  <body>
+    <div id="app">
+      <el-row>
+        <el-col :span="20" :offset="2">
+          <ul>
+            <li v-for="(item, index) in message">
+              <div class="grid-content bg-purple-dark">{{item}}</div>
+              <br>
+            </li>
+          </ul>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="2" :offset="11">
+          <el-button @click="refresh">NEXT{{msg}}</el-button>
+        </el-col>
+      </el-row>
+    </div>
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  </head>
-  <body>
-    <!-- tianqi -->
-    <div id="weather-view-he"></div>
-    <br>
-    <div id="app">
-       <p v-text="message"></p>
-       <button @click="refresh">下一条</button>
-    </div>
     <script>
       var app = new Vue({
         el: '#app',
         data:{
-            message: "",
-            api: "https://autumnfish.cn/api/joke/list?num=1",
+            message: [],
+            count: 0,
+            msg: "",
+            api: "https://autumnfish.cn/api/joke/list?num=1"
         },
         methods:{
             refresh: function(){
-                axios.get(this.api + this.num).then(response => (this.message = response.data.jokes[0]))
+                axios.get(this.api + this.num).then(response => (this.message.push(response.data.jokes[0])));
+                this.count ++;
+                if(this.count > 0){
+                  this.msg = "(" + this.count + ")"
+                }
             }
         }
       })
     </script>
-    <!-- built files will be auto injected -->
+    <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
   </body>
-  <script>
-    WIDGET = {ID: '8yNbpBPUUS'};
-  </script>
-  <script type="text/javascript" src="https://apip.weatherdt.com/view/static/js/r.js?v=1111"></script>
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104935969-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
 
-    gtag('config', 'UA-104935969-1');
-  </script>
 </html>
