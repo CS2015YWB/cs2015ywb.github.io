@@ -7,11 +7,28 @@
     <title>笑话/JOKE</title>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+      #nav { 
+          width: 8%; 
+          height: 100%; 
+          border: 1px solid #D4CD49; 
+          background-color: indianred; 
+          position:fixed;
+          left:0;
+          top:0%;
+          text-align:center; 
+          align-items: center;
+          font-size: 400%;
+          font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+          word-wrap:break-word; 
+          word-break:break-all;
+        }
+    </style>
   </head>
   <body>
     <div id="app">
       <el-row>
-        <el-col :span="20" :offset="2">
+        <el-col :span="22" :offset="2">
           <ul>
             <li v-for="(item, index) in message">
               <div class="grid-content bg-purple-dark">{{item}}</div>
@@ -22,7 +39,7 @@
       </el-row>
       <el-row>
         <el-col :span="2" :offset="11">
-          <el-button @click="refresh">NEXT{{msg}}</el-button>
+          <div id="nav" @click="refresh">JOKE{{count}}</div>
         </el-col>
       </el-row>
     </div>
@@ -35,16 +52,12 @@
         data:{
             message: [],
             count: 0,
-            msg: "",
             api: "https://autumnfish.cn/api/joke/list?num=1"
         },
         methods:{
             refresh: function(){
                 axios.get(this.api + this.num).then(response => (this.message.push(response.data.jokes[0])));
                 this.count ++;
-                if(this.count > 0){
-                  this.msg = "(" + this.count + ")"
-                }
             }
         }
       })
