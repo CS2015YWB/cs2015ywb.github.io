@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--api: https://autumnfish.cn/api/joke/-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>土味情话</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+      #nav { 
+          width: 8%; 
+          height: 100%; 
+          border: 1px solid #D4CD49; 
+          background-color: orangered; 
+          position:fixed;
+          left:0;
+          top:0%;
+          text-align:center; 
+          align-items: center;
+          font-size: 400%;
+          font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+          word-wrap:break-word; 
+          word-break:break-all;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <el-row>
+        <el-col :span="22" :offset="2">
+          <ul>
+            <li v-for="(item, index) in message">
+              <div class="grid-content bg-purple-dark">{{item}}</div>
+              <br>
+            </li>
+          </ul>
+        </el-col>
+      </el-row>
+      <el-row>
+        <el-col :span="2" :offset="11">
+          <div id="nav" @click="refresh">LOVE{{count}}</div>
+        </el-col>
+      </el-row>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data:{
+            message: [],
+            count: 0,
+            api: "http://v1.alapi.cn/api/qinghua?type=json&&num="
+        },
+        methods:{
+            refresh: function(){
+                axios.get(this.api+Math.ceil(Math.random()*10000000)).then(response => (this.message.push(response.data["data"]["content"])));
+                this.count ++;
+            }
+        }
+      })
+    </script>
+    <!-- import JavaScript -->
+  <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+  </body>
+
+</html>
